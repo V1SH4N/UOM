@@ -10,7 +10,6 @@ listingForm.addEventListener('submit', function(event) {
 
     event.preventDefault();
 
-    // Get input values
     const imageInput = document.getElementById('image');
     const productName = document.getElementById('productName').value;
     const description = document.getElementById('description').value;
@@ -52,6 +51,7 @@ listingForm.addEventListener('submit', function(event) {
 
             newListing.appendChild(image);
             newListing.appendChild(productNameContainer);
+            newListing.appendChild(descriptionContainer);
             newListing.appendChild(priceContainer);
             newListing.appendChild(purchaseButton);
 
@@ -65,8 +65,6 @@ listingForm.addEventListener('submit', function(event) {
         alert('Please upload an image.')
     }
 });
-
-
 
 createListingButton.addEventListener('click', (e) => {
     if (listingForm.style.display === 'none' || listingForm.style.display === ''){
