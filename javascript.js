@@ -1,4 +1,5 @@
-const newListingButton = document.querySelector('#newListingButton');
+const createListingButton = document.querySelector('#createListingButton');
+const cancelListingButton = document.querySelector('#cancelListing');
 const listingsContainer = document.querySelector('#listingsContainer');
 const listingForm = document.querySelector('#listingForm')
 
@@ -7,11 +8,12 @@ let listingID = 0;
 
 listingForm.addEventListener('submit', function(event) {
 
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault();
 
     // Get input values
     const imageInput = document.getElementById('image');
     const productName = document.getElementById('productName').value;
+    const description = document.getElementById('description').value;
     const price = document.getElementById('price').value;
     
 
@@ -35,6 +37,10 @@ listingForm.addEventListener('submit', function(event) {
             productNameContainer.classList.add('productName');
             productNameContainer.textContent = productName;
 
+            const descriptionContainer = document.createElement('div');
+            descriptionContainer.classList.add('productName');
+            descriptionContainer.textContent = description;
+
             const priceContainer = document.createElement('div');
             priceContainer.classList.add('productName');
             priceContainer.textContent = price;
@@ -52,6 +58,7 @@ listingForm.addEventListener('submit', function(event) {
             listingsContainer.appendChild(newListing);
             listingForm.reset();
             listingForm.style.display = 'none';
+            createListingButton.style.display = 'block';
         };
         reader.readAsDataURL(imageInput.files[0]); 
     } else {
@@ -61,14 +68,17 @@ listingForm.addEventListener('submit', function(event) {
 
 
 
-newListingButton.addEventListener('click', (e) => {
+createListingButton.addEventListener('click', (e) => {
     if (listingForm.style.display === 'none' || listingForm.style.display === ''){
         listingForm.style.display = 'block';
-    }else {
-        listingForm.style.display = 'none'
-        listingForm.reset();;
+        createListingButton.style.display = 'none';
     }
+})
 
+cancelListingButton.addEventListener('click', (e) => {
+    listingForm.style.display = 'none';
+    listingForm.reset();
+    createListingButton.style.display = 'block';
 })
 
 listingsContainer.addEventListener('click', (e) => {

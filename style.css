@@ -12,7 +12,7 @@ body{
     gap: 20px;
 }
 
-#formContainer{
+#createListingContainer{
     border: 1px solid black;
 }
 #listingForm{
